@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<ArtGeneration />} />
+          <Route path="/" element={<ArtGeneration />} />
           <Route path="/allcritiques" element={<OpinionGallery />} />
           <Route path="/critique/new" element={<CreateCritique />} />
           <Route path="/critique/:id/edit" element={<ModifyCritique />} />

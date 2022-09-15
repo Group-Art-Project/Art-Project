@@ -12,6 +12,7 @@ const ArtGeneration = () => {
             </div>
             <div>
                 Hello
+                World
             </div>
         </div>
     )
