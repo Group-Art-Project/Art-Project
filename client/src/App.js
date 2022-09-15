@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import OpinionGallery from "./components/OpinionGallery";
+import CreateCritique from "./components/CreateCritique";
+import CritiqueDetail from "./components/CritiqueDetail";
+import ModifyCritique from "./components/ModifyCritique";
+import metLogo from './logo/artgallerylogo.png';
+import ArtGeneration from "./components/ArtGeneration";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Here
-        </a>
-      </header>
+      <img className="applogo" src={metLogo} alt="Logo is usually here.. we apologize for the mishap"/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<ArtGeneration />} />
+          <Route path="/allcritiques" element={<OpinionGallery />} />
+          <Route path="/critique/new" element={<CreateCritique />} />
+          <Route path="/critique/:id/edit" element={<ModifyCritique />} />
+          <Route path="/critique/:id" element={<CritiqueDetail />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
