@@ -4,14 +4,13 @@ import OpinionGallery from "./components/OpinionGallery";
 import CreateCritique from "./components/CreateCritique";
 import CritiqueDetail from "./components/CritiqueDetail";
 import ModifyCritique from "./components/ModifyCritique";
-import metLogo from './logo/artgallerylogo.png';
+//import logo here
 import ArtGeneration from "./components/ArtGeneration";
 
 
 function App() {
   return (
     <div className="App">
-      <img className="applogo" src={metLogo} alt="Logo is usually here.. we apologize for the mishap"/>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<ArtGeneration />} />
