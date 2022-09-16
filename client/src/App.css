@@ -25,7 +25,12 @@
   margin-bottom: 30px;
 }
 .artData{
-  display: block;
-  justify-items: left;
-  justify-content: left;
+  flex: 2;
+  align-items: flex-start;
+  text-align: left;
+
+}
+
+.allArtData {
+  display: flex;
 }
