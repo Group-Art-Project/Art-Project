@@ -26,32 +26,41 @@ const ArtGeneration = () => {
 
     return (
         <div className='container'>
-            <div className='logoLink'>
-                <p>Logo will go here on left hand side in line with link back to home</p>
+            <div className='pageTitleButton'>
+                <h1>Welcome!</h1>
                 <Link to="/allcritiques">
                     <button className="goToBlogButton"> Go to blog </button>
                 </Link>
             </div>
             <div>
-                Hello
-                World
+                <p>
+                    This site functions as an art education and creative exercise tool. We are proud to offer a randomly generated piece of art for you to critique and leave your impressions of.
+                </p>
+                <p>
+                    Subsequently, leave your impressions on our blog site, where your analysis will be presented for other artistically interested folks to peruse.
+                </p>
             </div>
             <br/>
 
             {/* working on functional section, buttons, onClick = filter with axios, 
             waiting on San w/ routes to actually hook up */}
 
-            <div>
+            <div className='timePeriod'>
+                <p>Generate a piece of art from one of the below centuries</p>
                 <button onClick={handleClick}>18th Century</button>
                 <button onClick={handleClick}>19th Century</button>
                 <button onClick={handleClick}>20th Century</button>
                 <button onClick={handleClick}>21st Century</button>
             </div>
-            <div>
+            <div className='artRegion'>
+                <p>Generate a piece of art from one of the below world regions</p>
                 <button onClick={handleClick}>African Art</button>
                 <button onClick={handleClick}>American Art</button>
                 <button onClick={handleClick}>Asian Art</button>
                 <button onClick={handleClick}>European Art</button>
+            </div>
+            <div>
+                <p>Another day another div for testing purposes</p>
             </div>
             <div>
         {error && <h2>{error}</h2>}
