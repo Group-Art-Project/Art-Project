@@ -3,21 +3,22 @@ const axios = require("axios");
 //@desc         Get Single Art by culture
 //@route        GET /api/art/:culture
 
-    const getArtsCollection = async (culture) => {
+    module.exports = {
+
+        getArtsCollection: async (culture) => {
         const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=" + culture);
         const totalArtsData = await response.data;
         return totalArtsData;
-    }
+    },
 
-    const getSingleArt = async (totalArtsData) => {
+        getSingleArt: async (totalArtsData) => {
         const res = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/objects/" 
                       + totalArtsData.objectIDs[Math.floor(Math.random() * totalArtsData.total) + 1]);
             const singleArt = await res.data;
             return singleArt;
-    }
+    },
 
-
-    exports.getArtsByCulture = async (req, res) => {
+        getArtsByCulture: async (req, res) => {
         try {
             const totalArtsData = await getArtsCollection(req.params.culture);
             const singleArt = await getSingleArt(totalArtsData);
@@ -27,9 +28,8 @@ const axios = require("axios");
             console.log("Test error")
             res.status(400).json(error);
         }
-    };
-
-
+    }
+}
 // //@desc         Get pet by Id
 // //@route        GET /api/pet/:id
 // exports.getPetById = async (req, res, next) => {
