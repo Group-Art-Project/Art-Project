@@ -1,29 +1,32 @@
 const axios = require("axios");
 
-    const getArtsCollection = async (culture) => {
+    const getCultureCollection = async (culture) => {
         const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=" + culture);
-        const totalArtsData = await response.data;
-        return totalArtsData;
+        const totalCultureData = await response.data;
+        return totalCultureData;
     }
-    const getSingleArt = async (totalArtsData) => {
+
+    const getSingleCultureArt = async (totalCultureData) => {
         const res = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/objects/" 
-                    + totalArtsData.objectIDs[Math.floor(Math.random() * totalArtsData.total) + 1]);
-            const singleArt = await res.data;
-            return singleArt;
+                    + totalCultureData.objectIDs[Math.floor(Math.random() * totalCultureData.total) + 1]);
+            const singleCultureArt = await res.data;
+            return singleCultureArt;
     }
+    
 
     module.exports = {
         //@desc         Get Single Art by culture
         //@route        GET /api/art/:culture
+        
         getArtsByCulture: async (req, res) => {
         try {
-            const totalArtsData = await getArtsCollection(req.params.culture);
-            const singleArt = await getSingleArt(totalArtsData);
-            res.status(200).json(singleArt)
+            const totalCultureData = await getCultureCollection(req.params.culture);
+            const singleCultureArt = await getSingleCultureArt(totalCultureData);
+            res.status(200).json(singleCultureArt)
             
         } catch (error) {
             console.log("Test error")
             res.status(400).json(error);
         }
-    }
+    },
 }

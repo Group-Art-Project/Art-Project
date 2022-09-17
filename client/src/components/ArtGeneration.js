@@ -4,35 +4,22 @@ import axios from 'axios';
 
 const ArtGeneration = () => {
 
-    const [art, setArt] = useState([]);
+    const [culture, setCulture] = useState([]);
+    // const [objectDate, setObjectDate] = useState([]);
     const [error, setError] = useState('');
-
-        // useEffect(() => {
-        //     console.log("useEffect running")
-        //     axios.get('/api/art')
-        //     .then((art) => {
-        //     console.log(art)
-        //     return art
-        //     }).then((res) => {
-        //     console.log(res)
-        //     return setArt(res.data.results)
-        //     }).catch(error => {
-        //     console.log(error)
-        //     })
-        // }, [])
 
     const handleClick = async(searchCriteria) => {
         try {
-            const art = await axios.get('http://localhost:5000/api/art/'+ searchCriteria);
+            const culture = await axios.get('http://localhost:5000/api/art/'+ searchCriteria);
 
-        console.log('art piece: ', JSON.stringify(art, null, 4));
-        setArt([art]);
+        console.log('art piece: ', JSON.stringify(culture, null, 4));
+        setCulture([culture.data]);
     } 
         catch (error) {
             setError(error.message);
     } 
     };
-    console.log(art);
+    console.log(culture);
 
     return (
         <div className='container'>
@@ -73,18 +60,20 @@ const ArtGeneration = () => {
                 <p>Another day another div for testing purposes</p>
             </div>
             <div>
-        {error && <h2>{error}</h2>}
-{/* 
-        {art.map(art => {
+
+        {culture.map(culture => {
             return (
-            <div key={art}>
-                <h2>{art.title}</h2>
-                <h2>{art.region}</h2>
-                <h2>{art.primaryImage}</h2>
+            <div key={culture}>
+                <h2>{culture.artistDisplayName}</h2>
+                <h2>{culture.title}</h2>
+                <h2>{culture.culture}</h2>
+                <h2>{culture.artistNationality}</h2>
+                <h2>{culture.objectBeginDate} to {culture.objectEndDate}</h2>
+                <img src={culture.primaryImage} alt="sorry! there is no image available for this request"/>
                 <br />
             </div>
             );
-        })} */}
+        })} 
         </div>
         </div>
     )
