@@ -1,11 +1,10 @@
 const express = require("express");
-const artroute = require("./routes/arts.js");
 const cors = require("cors");
 const app = express();
 
 app.use(express.json(), express.urlencoded({extended: true}));
 app.use(cors({
-    origin: 'http://localhost:5000',
+    origin: 'http://localhost:3000',
     }
 ))
 

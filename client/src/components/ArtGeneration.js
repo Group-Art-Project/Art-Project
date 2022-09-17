@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -7,22 +7,45 @@ const ArtGeneration = () => {
     const [art, setArt] = useState([]);
     const [error, setError] = useState('');
 
-    const handleClick = async () => {
+        // useEffect(() => {
+        //     console.log("useEffect running")
+        //     axios.get('/api/art')
+        //     .then((art) => {
+        //     console.log(art)
+        //     return art
+        //     }).then((res) => {
+        //     console.log(res)
+        //     return setArt(res.data.results)
+        //     }).catch(error => {
+        //     console.log(error)
+        //     })
+        // }, [])
+
+    const handleClick = async(e) => {
+        e.preventDefault();
+
+            // axios.get(`http://api/art`)
+            // .then((art) => {
+            //     console.log(art)
+            //     return setArt([art.data])
+            // }).catch(error => {
+            //     console.log(error)
+            // })
         try {
-            const {art} = await axios.get('https://collectionapi.metmuseum.org/public/collection/v1/objects/[objectID]', {
+            const {art} = await axios.get('/api/art', {
             headers: {
                 Accept: 'application/json',
         },
         });
 
         console.log('art piece: ', JSON.stringify(art, null, 4));
-        setArt(art.id);
+        setArt([art.data]);
     } 
         catch (error) {
             setError(error.message);
     } 
     };
-    console.log(art.id);
+    console.log(art);
 
     return (
         <div className='container'>
@@ -64,17 +87,17 @@ const ArtGeneration = () => {
             </div>
             <div>
         {error && <h2>{error}</h2>}
-
+{/* 
         {art.map(art => {
             return (
-            <div key={art.id}>
+            <div key={art}>
                 <h2>{art.title}</h2>
                 <h2>{art.region}</h2>
                 <h2>{art.primaryImage}</h2>
                 <br />
             </div>
             );
-        })}
+        })} */}
         </div>
         </div>
     )
