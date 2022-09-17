@@ -21,25 +21,12 @@ const ArtGeneration = () => {
         //     })
         // }, [])
 
-    const handleClick = async(e) => {
-        e.preventDefault();
-
-            // axios.get(`http://api/art`)
-            // .then((art) => {
-            //     console.log(art)
-            //     return setArt([art.data])
-            // }).catch(error => {
-            //     console.log(error)
-            // })
+    const handleClick = async(searchCriteria) => {
         try {
-            const {art} = await axios.get('/api/art', {
-            headers: {
-                Accept: 'application/json',
-        },
-        });
+            const art = await axios.get('http://localhost:5000/api/art/'+ searchCriteria);
 
         console.log('art piece: ', JSON.stringify(art, null, 4));
-        setArt([art.data]);
+        setArt([art]);
     } 
         catch (error) {
             setError(error.message);
@@ -77,10 +64,10 @@ const ArtGeneration = () => {
             </div>
             <div className='artRegion'>
                 <p>Generate a piece of art from one of the below world regions</p>
-                <button onClick={handleClick}>African Art</button>
-                <button onClick={handleClick}>American Art</button>
-                <button onClick={handleClick}>Asian Art</button>
-                <button onClick={handleClick}>European Art</button>
+                <button onClick={e => {handleClick("african")}}>African Art</button>
+                <button onClick={e => {handleClick("american")}}>American Art</button>
+                <button onClick={e => {handleClick("asian")}}>Asian Art</button>
+                <button onClick={e => {handleClick("european")}}>European Art</button>
             </div>
             <div>
                 <p>Another day another div for testing purposes</p>
