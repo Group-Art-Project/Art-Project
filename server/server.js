@@ -1,13 +1,16 @@
 const express = require("express");
 const artroute = require("./routes/arts.js");
 const cors = require("cors");
-
-require("./config/mongoose.config");
-
 const app = express();
+
 app.use(express.json(), express.urlencoded({extended: true}));
-app.use(cors())
-app.use('/api/art',artroute);
+app.use(cors({
+    origin: 'http://localhost:5000',
+    }
+))
+
+require('./config/mongoose.config');
+require('./routes/arts')(app);
 
 
 app.listen(5000 ,

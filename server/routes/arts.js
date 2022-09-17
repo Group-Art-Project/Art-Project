@@ -1,13 +1,6 @@
-const express = require("express");
-const { getArtsByCulture } = require("../controllers/Arts.js");
+const ArtController = require("../controllers/Arts.js");
 
-const artRouter = express();
-
-
-artRouter
-    .route('/:culture')
-    .get(getArtsByCulture)
-   
-
-// export default router;
-module.exports = artRouter;
+module.exports = (app) => {
+    app.get('/api/art', ArtController.getArtsCollection);
+    app.get('/api/art/:culture', ArtController.getArtsByCulture);
+}

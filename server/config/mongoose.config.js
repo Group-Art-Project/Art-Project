@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const project = "met_art_db";
  
-mongoose.connect('mongodb://localhost:27017/opinions', {
+mongoose.connect(`mongodb://127.0.0.1/${project}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-    .then(() => console.log('SUCCESSFULLY CONNECTED TO DATABASE'))
-    .catch(err => console.log('THERE WAS A PROBLEM CONNECTING TO THE DATABASE', err));
+    .then(() => console.log(`SUCCESSFULLY CONNECTED TO THE ${project}`))
+    .catch(err => console.log(`THERE WAS A PROBLEM CONNECTING TO THE ${project}`, err));
