@@ -1,4 +1,5 @@
 const axios = require("axios");
+const Opinion = require('../models/opinions');
 
     const getCultureCollection = async (culture) => {
         const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=" + culture);
@@ -30,14 +31,14 @@ const axios = require("axios");
         }
     },
     
-    createArt: (req, res) => {
-        console.log('!!!', req.body)
-        Critique.create(req.body)
+    createOpinion: (req, res) => {
+        console.log('!!!opinion info!!!', req.body)
+        Opinion.create(req.body)
             //.then(resp => resp.json())
-            .then(art => 
+            .then(opinion => 
                 {
-                    console.log('===posting filtered art', art)
-                    return res.json(art)
+                    console.log('===posting opinion', opinion)
+                    return res.json(opinion)
                 }
                 )
             .catch((error) => { res.status(400).json({error}) });

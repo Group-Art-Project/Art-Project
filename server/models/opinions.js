@@ -4,27 +4,38 @@ const OpinionSchema = new mongoose.Schema(
     {
         title:{
             type: String,
-            required: [true]
         },
 
-        artist:{
+        artistDisplayName:{
             type: String, 
-            required: [true]
         },
 
-        timePeriod:{
+        objectBeginDate:{
                 type: String, 
-                required: [true]
         },
 
-        region:{
+        objectEndDate:{
             type: String, 
-            required: [true]
         },
 
-        imageURL:{
+        objectName:{
             type: String, 
-            required: [true]
+        },
+
+        culture:{
+            type: String, 
+        },
+
+        artistNationality:{
+            type: String, 
+        },
+
+        creditLine:{
+            type: String, 
+        },
+
+        primaryImage:{
+            type: String, 
         },
 
         author:{
@@ -37,13 +48,13 @@ const OpinionSchema = new mongoose.Schema(
             required: [true, "Please enter your email address"]
         },
 
-        opinion:{
+        opinionContent:{
             type: String, 
             required: [true, "Tell us what you think!"]
         },
 
         rating:{
-            type: Integer, 
+            type: Number, 
             minimum: 1,
             maximum: 10,
             required: [true, "Rate this piece"]

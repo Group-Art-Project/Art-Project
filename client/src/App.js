@@ -12,6 +12,7 @@ import metLogo from './logo/metlogo.png';
 
 function App() {
 
+  const [opinionList, setOpinionList] = useState([]);
   const [culture, setCulture] = useState([]);
   const [error, setError] = useState('');
 
@@ -34,8 +35,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ArtGeneration error={error} setError={setError} handleCulture={handleCulture} culture={culture} setCulture={setCulture}/>} />
-          <Route path="/allcritiques" element={<OpinionGallery />} />
-          <Route path="/critique/new" element={<CreateCritique culture={culture} setCulture={setCulture} />} />
+          <Route path="/allcritiques" element={<OpinionGallery opinionList={opinionList} setOpinionList={setOpinionList} />} />
+          <Route path="/critique/new" element={<CreateCritique culture={culture} setCulture={setCulture} opinionList={opinionList} setOpinionList={setOpinionList} />} />
           <Route path="/critique/:id/edit" element={<ModifyCritique />} />
           <Route path="/critique/:id" element={<CritiqueDetail />} />
         </Routes>
