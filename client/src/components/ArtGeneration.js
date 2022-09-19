@@ -1,25 +1,26 @@
 import {useState, useEffect} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const ArtGeneration = () => {
+const ArtGeneration = (props) => {
 
-    const [culture, setCulture] = useState([]);
-    // const [objectDate, setObjectDate] = useState([]);
-    const [error, setError] = useState('');
+    const {handleCulture} = props;
+    const {error, setError} = props;
+    const {culture, setCulture} = props;
+    const navigate = useNavigate();
 
-    const handleClick = async(searchCriteria) => {
-        try {
-            const culture = await axios.get('http://localhost:5000/api/art/'+ searchCriteria);
-
-        console.log('art piece: ', JSON.stringify(culture, null, 4));
-        setCulture([culture.data]);
-    } 
-        catch (error) {
-            setError(error.message);
-    } 
-    };
-    console.log(culture);
+    console.log('===artData', culture)
+    axios.post(`http://localhost:8000/api/critique/new/:culture`, culture)
+    .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        setCulture([...culture, response.data]);
+        navigate("/critique/new");
+    })
+    .catch((error) => {
+        console.log(error.response.data);
+        setError(error.response.data);
+    });
 
     return (
         <div className='container'>
@@ -27,6 +28,9 @@ const ArtGeneration = () => {
                 <h1>Welcome!</h1>
                 <Link to="/allcritiques">
                     <button className="goToBlogButton"> Go to blog </button>
+                </Link>
+                <Link to="/critique/new">
+                    <button className="goToBlogButton"> Create new critique </button>
                 </Link>
             </div>
             <div>
@@ -44,17 +48,17 @@ const ArtGeneration = () => {
 
             <div className='timePeriod'>
                 <p>Generate a piece of art from one of the below centuries</p>
-                <button onClick={handleClick}>18th Century</button>
-                <button onClick={handleClick}>19th Century</button>
-                <button onClick={handleClick}>20th Century</button>
-                <button onClick={handleClick}>21st Century</button>
+                <button onClick={handleCulture}>18th Century</button>
+                <button onClick={handleCulture}>19th Century</button>
+                <button onClick={handleCulture}>20th Century</button>
+                <button onClick={handleCulture}>21st Century</button>
             </div>
             <div className='artRegion'>
                 <p>Generate a piece of art from one of the below world regions</p>
-                <button onClick={e => {handleClick("african")}}>African Art</button>
-                <button onClick={e => {handleClick("american")}}>American Art</button>
-                <button onClick={e => {handleClick("asian")}}>Asian Art</button>
-                <button onClick={e => {handleClick("european")}}>European Art</button>
+                <button onClick={e => {handleCulture("african")}}>African Art</button>
+                <button onClick={e => {handleCulture("american")}}>American Art</button>
+                <button onClick={e => {handleCulture("asian")}}>Asian Art</button>
+                <button onClick={e => {handleCulture("european")}}>European Art</button>
             </div>
             <div>
                 <p>Another day another div for testing purposes</p>
