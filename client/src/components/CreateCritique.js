@@ -1,18 +1,65 @@
 import React, { useEffect } from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const CreateCritique = (props) => {
 
+    const {opinionList, setOpinionList} = props;
     const {culture, setCulture} = props;
 
-    const [authorEmail, setAuthorEmail] = useState("");
     const [author, setAuthor] = useState("");
+    const [email, setEmail] = useState("");
     const [rating, setRating] = useState("");
-    const [content, setContent] = useState("");
+    const [opinionContent, setOpinionContent] = useState("");
+    const [errors, setErrors] = useState({});
 
-    console.log(culture)
+    const navigate = useNavigate();
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        const opinion = {
+            author,
+            email,
+            opinionContent,
+            rating
+        }
+
+        // const culture = {
+        //     title: culture[0].title,
+        //     artistDisplayName: culture[0].artistDisplayName,
+        //     objectBeginDate: culture[0].objectBeginDate,
+        //     objectEndDate: culture[0].objectEndDate,
+        //     objectName: culture[0].objectName,
+        //     culture: culture[0].culture,
+        //     artistNationality: culture[0].artistNationality,
+        //     primaryImage: culture[0].primaryImage
+        // }
+            
+
+        console.log('===opinion', opinion)
+        const data = {opinion, culture: culture[0]}
+        axios.post('http://localhost:5000/api/art/critique', data.opinion, data.culture)
+        .then((response) => {
+            console.log(response);
+            console.log(response.data);
+            setOpinionList([...opinionList, response.data]);
+            setAuthor("");
+            setEmail("");
+            setRating("");
+            setOpinionContent("");
+            navigate("/allcritiques");
+            console.log(data);
+        })
+        .catch((err) => {
+            console.log(err.response.status);
+            setErrors(err.response.status);
+        });
+    }
+
+    console.log(culture);
+    
 
     return (
         <div className='container'>
@@ -55,14 +102,14 @@ const CreateCritique = (props) => {
                 onChange={(e) => setAuthor(e.target.value)}
                 value={author}
                 />
-
+    {/* {errors.author ? <p id='error-red'>{errors.author.message}</p> : null} */}
                 <label htmlFor="authorEmail">Author Email:</label>
                 <input
                 type="text"
                 className="form-control"
                 placeholder="Enter your email"
-                onChange={(e) => setAuthorEmail(e.target.value)}
-                value={authorEmail}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 />
                 <label htmlFor="rating">Rating:</label>
                 <input name="rating"
@@ -79,18 +126,18 @@ const CreateCritique = (props) => {
                 type="textarea"
                 className="form-control"
                 placeholder="Write your critique here"
-                onChange={(e) => setContent(e.target.value)}
-                value={content}
+                onChange={(e) => setOpinionContent(e.target.value)}
+                value={opinionContent}
                 ></textarea>
 
                 </div>
             </div>
             <span className='deletePost'>
-            <button className="btn btn-primary" type="submit">Add Critique </button>
+            <button onClick={submitHandler} className="btn btn-primary">Add Critique </button>
             </span>
             </form>
         </div>
     )
 }
 
-export default CreateCritique
+export default CreateCritique;
