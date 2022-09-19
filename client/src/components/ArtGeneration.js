@@ -9,18 +9,8 @@ const ArtGeneration = (props) => {
     const {culture, setCulture} = props;
     const navigate = useNavigate();
 
-    // console.log('===artData', culture)
-    // axios.post(`http://localhost:5000/api/art/critique`, culture)
-    // .then((response) => {
-    //     console.log(response);
-    //     console.log(response.data);
-    //     setCulture([...culture, response.data]);
-    //     navigate("/critique/new");
-    // })
-    // .catch((error) => {
-    //     console.log(error.response.data);
-    //     setError(error.response.data);
-    // });
+    console.log('===artData', culture)
+    
 
     return (
         <div className='container'>
@@ -55,29 +45,26 @@ const ArtGeneration = (props) => {
             </div>
             <div className='artRegion'>
                 <p>Generate a piece of art from one of the below world regions</p>
-                <button onClick={e => {handleCulture("african")}}>African Art</button>
-                <button onClick={e => {handleCulture("american")}}>American Art</button>
-                <button onClick={e => {handleCulture("asian")}}>Asian Art</button>
-                <button onClick={e => {handleCulture("european")}}>European Art</button>
+                <button onClick={(e) => {handleCulture("african")}}>African Art</button>
+                <button onClick={(e) => {handleCulture("american")}}>American Art</button>
+                <button onClick={(e) => {handleCulture("asian")}}>Asian Art</button>
+                <button onClick={(e) => {handleCulture("european")}}>European Art</button>
             </div>
             <div>
                 <p>Another day another div for testing purposes</p>
             </div>
             <div>
-
-        {culture.map(culture => {
-            return (
-            <div key={culture}>
-                <h2>{culture.artistDisplayName}</h2>
-                <h2>{culture.title}</h2>
-                <h2>{culture.culture}</h2>
-                <h2>{culture.artistNationality}</h2>
-                <h2>{culture.objectBeginDate} to {culture.objectEndDate}</h2>
-                <img src={culture.primaryImage} alt="sorry! there is no image available for this request"/>
-                <br />
-            </div>
-            );
-        })} 
+            {culture.map(culture => {
+        return (
+        <div className='artgen-map' key={culture}>
+            <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
+            <img id='primaryImage' src={culture.primaryImage} alt="sorry, no image available" />
+            <br />
+        </div>
+        );
+    })}
+    <br/>
+    <br/>
         </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import OpinionGallery from "./components/OpinionGallery";
@@ -24,9 +24,9 @@ function App() {
   } 
       catch (error) {
           setError(error.message);
-  } 
+  }   
   };
-  console.log(culture);
+
   
   return (
     <div className="App">
@@ -35,7 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ArtGeneration error={error} setError={setError} handleCulture={handleCulture} culture={culture} setCulture={setCulture}/>} />
           <Route path="/allcritiques" element={<OpinionGallery />} />
-          <Route path="/critique/new" element={<CreateCritique culture={culture} />} />
+          <Route path="/critique/new" element={<CreateCritique culture={culture} setCulture={setCulture} />} />
           <Route path="/critique/:id/edit" element={<ModifyCritique />} />
           <Route path="/critique/:id" element={<CritiqueDetail />} />
         </Routes>

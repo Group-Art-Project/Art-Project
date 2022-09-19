@@ -1,37 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
-const CreateCritique = () => {
+const CreateCritique = (props) => {
+
+    const {culture, setCulture} = props;
 
     const [authorEmail, setAuthorEmail] = useState("");
     const [author, setAuthor] = useState("");
     const [rating, setRating] = useState("");
     const [content, setContent] = useState("");
 
+    console.log(culture)
 
     return (
         <div className='container'>
-            <div className='pageTitleButton'>
+            <div className='pageTitleButton' key={culture}>
                 
-                <h1>Give Your Critique of title</h1>
-                <Link to="/allcritiques">
-                    <button className="goToBlogButton"> Go to blog </button>
-                </Link>
-                <Link to="/">
-                    <button className="goToBlogButton"> Go to home </button>
-                </Link>
+                <h2 id='critique-header'>Give Your Critique of: {culture[0].title} </h2>
+                <div className='button-spacer'>
+                    <Link to="/allcritiques">
+                        <button className="goToBlogButton"> Go to blog </button>
+                    </Link>
+                    <Link to="/">
+                        <button className="goToBlogButton"> Go to home </button>
+                    </Link>
+                </div>
             </div>
             <div className='allArtData'>
                 <div className='artData'>
-                    <h6>Artist:</h6>
-                    <h6>Time Period:</h6>
-                    <h6>Region:</h6>
+                    <h6>Artist: {culture[0].artistDisplayName} </h6>
+                    <h6>Object: {culture[0].objectName}</h6>
+                    <h6>Time Period: {culture[0].objectBeginDate} to {culture[0].objectEndDate} </h6>
+                    <h6>Region: {culture[0].culture}</h6>
+                    <h6>Nationality: {culture[0].artistNationality}</h6>
+                    <h6>Description: {culture[0].creditLine}</h6>
                 </div>
                 <div className='artData'>
-                    <h4>Image of Art: </h4>
+                    <h6>This piece is housed in: {culture[0].department}</h6>
+                    <img id='primaryImage' src={culture[0].primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
+            <br/>
+            <br/>
             <form>
             <div className="form-group">
                 <div className="column">
