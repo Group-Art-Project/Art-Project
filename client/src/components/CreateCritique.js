@@ -1,11 +1,8 @@
 import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ArtGeneration from './ArtGeneration';
 
-const CreateCritique = (props) => {
-
-    const {culture} = props;
+const CreateCritique = () => {
 
     const [authorEmail, setAuthorEmail] = useState("");
     const [author, setAuthor] = useState("");
@@ -17,7 +14,7 @@ const CreateCritique = (props) => {
         <div className='container'>
             <div className='pageTitleButton'>
                 
-                <h1>Give Your Critique of </h1>
+                <h1>Give Your Critique of title</h1>
                 <Link to="/allcritiques">
                     <button className="goToBlogButton"> Go to blog </button>
                 </Link>
@@ -81,7 +78,7 @@ const CreateCritique = (props) => {
             </span>
             </form>
         </div>
-  )
+    )
 }
 
 export default CreateCritique

@@ -29,4 +29,17 @@ const axios = require("axios");
             res.status(400).json(error);
         }
     },
+    
+    createArt: (req, res) => {
+        console.log('!!!', req.body)
+        Critique.create(req.body)
+            //.then(resp => resp.json())
+            .then(art => 
+                {
+                    console.log('===posting filtered art', art)
+                    return res.json(art)
+                }
+                )
+            .catch((error) => { res.status(400).json({error}) });
+        },
 }
