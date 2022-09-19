@@ -1,9 +1,33 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import {useEffect} from 'react';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
 
 const OpinionGallery = (props) => {
 
     const {opinionList, setOpinionList} = props;
+    const navigate = useNavigate();
+    // const {id} = useParams();
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/api/art/critique`)
+    //     .then((res) => {
+    //         console.log(res.data);
+    //         setOpinionList(res.data);
+    //     })
+    //     .catch((err) => console.log(err));
+    // }, []);
+
+    const deleteOpinion = (idFromBelow) => {
+        console.log('====idFromBelow', idFromBelow)
+        axios.delete(`http://localhost:5000/api/art/critique/${idFromBelow}`)
+        .then((res) => {
+            console.log(res.data);
+            setOpinionList(opinionList.filter((opinion, index) => opinion._id !== idFromBelow));
+        })
+        .catch((err) => console.log(err))
+    };
+
+    console.log(opinionList);
 
     return (
         <div className="container">
@@ -23,9 +47,24 @@ const OpinionGallery = (props) => {
                         <th scope="col">Artist</th>
                         <th scope="col">Rating</th>
                         <th scope="col">Actions</th>
-                    </tr>
+                    </tr> 
                 </thead>
-                <tbody>
+                <tbody className="table table-striped table-bordered">
+                {
+                    opinionList.map((opinion, index) => (
+                            <div key={index}>
+                                    <tr>
+                                        <td scope='col'>{opinionList[1].title}</td>
+                                        <td scope='col'>{opinionList[1].artistDisplayName}</td>
+                                        <td scope='col'>{opinionList[0].rating}</td>
+                                        <td scope='col'>
+                                            <button>Edit</button>
+                                            <button onClick={()=> deleteOpinion(opinion._id)}>Delete</button>
+                                        </td>
+                                    </tr>
+                            </div>
+                    ))
+                }
                 </tbody>
                 </table>
                 </div>

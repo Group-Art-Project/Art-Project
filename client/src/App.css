@@ -62,3 +62,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.opinion-map{
+  display: flex;
+  width: 100%;
+}
