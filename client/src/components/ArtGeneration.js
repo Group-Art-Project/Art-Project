@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const ArtGeneration = (props) => {
@@ -9,18 +9,18 @@ const ArtGeneration = (props) => {
     const {culture, setCulture} = props;
     const navigate = useNavigate();
 
-    console.log('===artData', culture)
-    axios.post(`http://localhost:8000/api/critique/new/:culture`, culture)
-    .then((response) => {
-        console.log(response);
-        console.log(response.data);
-        setCulture([...culture, response.data]);
-        navigate("/critique/new");
-    })
-    .catch((error) => {
-        console.log(error.response.data);
-        setError(error.response.data);
-    });
+    // console.log('===artData', culture)
+    // axios.post(`http://localhost:5000/api/art/critique`, culture)
+    // .then((response) => {
+    //     console.log(response);
+    //     console.log(response.data);
+    //     setCulture([...culture, response.data]);
+    //     navigate("/critique/new");
+    // })
+    // .catch((error) => {
+    //     console.log(error.response.data);
+    //     setError(error.response.data);
+    // });
 
     return (
         <div className='container'>
