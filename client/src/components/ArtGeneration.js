@@ -38,10 +38,10 @@ const ArtGeneration = (props) => {
 
             <div className='timePeriod'>
                 <p>Generate a piece of art from one of the below centuries</p>
-                <button onClick={handleCulture}>18th Century</button>
-                <button onClick={handleCulture}>19th Century</button>
-                <button onClick={handleCulture}>20th Century</button>
-                <button onClick={handleCulture}>21st Century</button>
+                <button onClick={e => {handleCulture("dateBegin=1701&dateEnd=1800")}}>18th Century</button>
+                <button onClick={e => {handleCulture("dateBegin=1801&dateEnd=1900")}}>19th Century</button>
+                <button onClick={e => {handleCulture("dateBegin=1901&dateEnd=2000")}}>20th Century</button>
+                <button onClick={e => {handleCulture("dateBegin=2001&dateEnd=2200")}}>21th Century</button>
             </div>
             <div className='artRegion'>
                 <p>Generate a piece of art from one of the below world regions</p>
