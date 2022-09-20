@@ -92,8 +92,6 @@ const CreateCritique = (props) => {
                     <img id='primaryImage' src={culture[0].primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
-            <br/>
-            <br/>
             <form>
             <div className="form-group">
                 <div className="column">

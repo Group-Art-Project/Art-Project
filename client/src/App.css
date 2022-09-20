@@ -67,3 +67,16 @@
   display: flex;
   width: 100%;
 }
+
+#identify-button{
+  font-style: italic;
+  background-image: linear-gradient(to right, silver, whitesmoke, silver);
+  border: 0.5px black;
+  border-radius: 3px;
+}
+
+#identify-button:hover{
+  font-style: italic;
+  background-image: linear-gradient(to right, whitesmoke, rgba(192, 192, 192, 0.5), whitesmoke);
+  transition: 500ms;
+}

@@ -6,7 +6,7 @@ const OpinionGallery = (props) => {
 
     const [opinionList, setOpinionList] = useState([]);
     const navigate = useNavigate();
-    // const {id} = useParams();
+    const {id} = useParams();
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/art/critique/all`)
@@ -54,7 +54,7 @@ const OpinionGallery = (props) => {
                     opinionList && opinionList.map((opinion, index) => (
                             <div key={index}>
                                     <tr>
-                                        <td scope='col'>{opinion.title}</td>
+                                        <button id='identify-button'><Link to={`/critique/${opinion._id}`}>{opinion.title}</Link></button>
                                         <td scope='col'>{opinion.artistDisplayName}</td>
                                         <td scope='col'>{opinion.rating}</td>
                                         <td scope='col'>
