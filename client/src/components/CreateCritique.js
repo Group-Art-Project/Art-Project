@@ -28,7 +28,22 @@ const CreateCritique = (props) => {
 
         console.log('===opinion', opinion)
         const data = {opinion, culture: culture[0]}
-        axios.post('http://localhost:5000/api/art/critique', data.opinion, data.culture)
+        axios.post('http://localhost:5000/api/art/critique',
+        {
+            title: data.culture.title,
+            artistDisplayName: data.culture.artistDisplayName,
+            objectBeginDate: data.culture.objectBeginDate,
+            objectEndDate: data.culture.objectEndDate,
+            objectName: data.culture.objectName,
+            culture: data.culture.culture,
+            artistNationality: data.culture.artistNationality,
+            creditLine:data.culture.creditLine,
+            primaryImage: data.culture.primaryImage,
+            author: data.opinion.author,
+            email: data.opinion.email,
+            opinionContent: data.opinion.opinionContent,
+            rating: data.opinion.rating,
+        })
         .then((response) => {
             console.log(response);
             console.log(response.data);

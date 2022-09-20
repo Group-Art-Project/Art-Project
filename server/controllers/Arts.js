@@ -54,8 +54,18 @@ const Opinion = require('../models/opinions');
             .then((oneOpinion) => res.json(oneOpinion))
             .catch((err) => { res.status(400).json({err}) });
         },
+        getOpinions: async (req, res) => {
+            try {
+                const opinions = await Opinion.find();
+                res.status(200).json(opinions);
+            } catch (error) {
+                
+            }
+
+        },
         
         deleteOpinion: (req, res) => {
+            console.log(req.params);
             Opinion.deleteOne({_id: req.params.id})
             .then(deleteOpinion => res.json(deleteOpinion))
             .catch((err) => { res.status(400).json({err}) });
