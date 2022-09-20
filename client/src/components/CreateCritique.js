@@ -125,7 +125,7 @@ const CreateCritique = (props) => {
 
 
                 <label htmlFor="content">Content:</label>
-                <textarea name="content" cols="20" rows="25"
+                <textarea name="content" cols="20" rows="12"
                 type="textarea"
                 className="form-control"
                 placeholder="Write your critique here"

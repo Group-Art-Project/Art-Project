@@ -36,32 +36,38 @@ const Opinion = require('../models/opinions');
             }
         },
     
-    createOpinion: (req, res) => {
-        console.log('!!!opinion info!!!', req.body)
-        Opinion.create(req.body)
-            //.then(resp => resp.json())
-            .then(opinion => 
-                {
-                    console.log('===posting opinion', opinion)
-                    return res.json(opinion)
-                }
-                )
-            .catch((error) => { res.status(400).json({error}) });
+        createOpinion: (req, res) => {
+            console.log('!!!opinion info!!!', req.body)
+            Opinion.create(req.body)
+                //.then(resp => resp.json())
+                .then(opinion => 
+                    {
+                        console.log('===posting opinion', opinion)
+                        return res.json(opinion)
+                    }
+                    )
+                .catch((error) => { res.status(400).json({error}) });
+            },
+
+        updateOpinions: async (req, res) => {
+            try {
+                const updatedOpinions = await Opinion.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators:true})
+                res.status(200).json(updatedOpinions)
+            } catch (error) { res.status(400).json({error}) };
         },
 
-        getOneOpinion: (req, res) => {
-            Opinion.findOne({_id: req.params.id})
-            .then((oneOpinion) => res.json(oneOpinion))
-            .catch((err) => { res.status(400).json({err}) });
+        getOneOpinion: async (req, res) => {
+            try {
+                const oneOpinion = await Opinion.findOne({_id: req.params.id})
+                res.status(200).json(oneOpinion)
+            } catch (error) { res.status(400).json({error}) };
         },
+
         getOpinions: async (req, res) => {
             try {
                 const opinions = await Opinion.find();
                 res.status(200).json(opinions);
-            } catch (error) {
-                
-            }
-
+            } catch (error) { res.status(400).json({error}) };
         },
         
         deleteOpinion: (req, res) => {
