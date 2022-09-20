@@ -19,9 +19,6 @@ const ArtGeneration = (props) => {
                 <Link to="/allcritiques">
                     <button className="goToBlogButton"> Go to blog </button>
                 </Link>
-                <Link to="/critique/new">
-                    <button className="goToBlogButton"> Create new critique </button>
-                </Link>
             </div>
             <div>
                 <p>

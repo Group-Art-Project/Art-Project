@@ -58,7 +58,7 @@ const OpinionGallery = (props) => {
                                         <td scope='col'>{opinion.artistDisplayName}</td>
                                         <td scope='col'>{opinion.rating}</td>
                                         <td scope='col'>
-                                            <button>Edit</button>
+                                            <button onClick={()=> navigate(`/critique/edit/${opinion._id}`)}>Edit</button>
                                             <button onClick={()=> deleteOpinion(opinion._id)}>Delete</button>
                                         </td>
                                     </tr>

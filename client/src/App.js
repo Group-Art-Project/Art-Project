@@ -37,7 +37,7 @@ function App() {
           <Route path="/" element={<ArtGeneration error={error} setError={setError} handleCulture={handleCulture} culture={culture} setCulture={setCulture}/>} />
           <Route path="/allcritiques" element={<OpinionGallery opinionList={opinionList} setOpinionList={setOpinionList} />} />
           <Route path="/critique/new" element={<CreateCritique culture={culture} setCulture={setCulture} opinionList={opinionList} setOpinionList={setOpinionList} />} />
-          <Route path="/critique/edit/:id" element={<ModifyCritique />} />
+          <Route path="/critique/edit/:id" element={<ModifyCritique culture={culture} setCulture={setCulture} opinionList={opinionList} setOpinionList={setOpinionList} />} />
           <Route path="/critique/:id" element={<CritiqueDetail />} />
         </Routes>
       </BrowserRouter>
