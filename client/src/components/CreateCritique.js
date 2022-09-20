@@ -26,25 +26,13 @@ const CreateCritique = (props) => {
             rating
         }
 
-        // const culture = {
-        //     title: culture[0].title,
-        //     artistDisplayName: culture[0].artistDisplayName,
-        //     objectBeginDate: culture[0].objectBeginDate,
-        //     objectEndDate: culture[0].objectEndDate,
-        //     objectName: culture[0].objectName,
-        //     culture: culture[0].culture,
-        //     artistNationality: culture[0].artistNationality,
-        //     primaryImage: culture[0].primaryImage
-        // }
-            
-
         console.log('===opinion', opinion)
         const data = {opinion, culture: culture[0]}
         axios.post('http://localhost:5000/api/art/critique', data.opinion, data.culture)
         .then((response) => {
             console.log(response);
             console.log(response.data);
-            setOpinionList([...opinionList, response.data]);
+            setOpinionList([data.opinion, data.culture]);
             setAuthor("");
             setEmail("");
             setRating("");

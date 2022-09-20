@@ -48,4 +48,16 @@ const Opinion = require('../models/opinions');
                 )
             .catch((error) => { res.status(400).json({error}) });
         },
+
+        getOneOpinion: (req, res) => {
+            Opinion.findOne({_id: req.params.id})
+            .then((oneOpinion) => res.json(oneOpinion))
+            .catch((err) => { res.status(400).json({err}) });
+        },
+        
+        deleteOpinion: (req, res) => {
+            Opinion.deleteOne({_id: req.params.id})
+            .then(deleteOpinion => res.json(deleteOpinion))
+            .catch((err) => { res.status(400).json({err}) });
+        },
 }
