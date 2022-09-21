@@ -46,7 +46,8 @@ const Opinion = require('../models/opinions');
                         return res.json(opinion)
                     }
                     )
-                .catch((error) => { res.status(400).json({error}) });
+               // .catch((error) => { res.status(400).json({error}) });
+                .catch((err) => res.status(400).json({message:'there was a problem submitting the critique', error:err.errors}));
             },
 
         updateOpinions: async (req, res) => {

@@ -51,15 +51,16 @@ const ArtGeneration = (props) => {
                 <p>Another day another div for testing purposes</p>
             </div>
             <div>
-            {culture.map(culture => {
+            <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
+            {/* {culture.map(culture => {
         return (
         <div className='artgen-map' key={culture}>
-            <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
+             <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
             <img id='primaryImage' src={culture.primaryImage} alt="sorry, no image available" />
             <br />
         </div>
         );
-    })}
+    })} */}
     <br/>
     <br/>
         </div>
