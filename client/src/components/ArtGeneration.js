@@ -51,8 +51,7 @@ const ArtGeneration = (props) => {
                 <p>Another day another div for testing purposes</p>
             </div>
             <div>
-            <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
-            {/* {culture.map(culture => {
+            {culture.map(culture => {
         return (
         <div className='artgen-map' key={culture}>
              <Link to="/critique/new"><button> Write critique on: {culture.title} </button> </Link>
@@ -60,7 +59,7 @@ const ArtGeneration = (props) => {
             <br />
         </div>
         );
-    })} */}
+    })}
     <br/>
     <br/>
         </div>

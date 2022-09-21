@@ -57,7 +57,8 @@ const CreateCritique = (props) => {
         })
         .catch((err) => {
             console.log(err.response.status);
-            setErrors(err.response.status);
+            // setErrors(err.response.status);
+            setErrors(err.response.data.console.error);
         });
     }
 
@@ -103,7 +104,7 @@ const CreateCritique = (props) => {
                 onChange={(e) => setAuthor(e.target.value)}
                 value={author}
                 />
-    {/* {errors.author ? <p id='error-red'>{errors.author.message}</p> : null} */}
+    {errors.author ? <p id='error-red'>{errors.author.message}</p> : null}
                 <label htmlFor="authorEmail">Author Email:</label>
                 <input
                 type="text"
