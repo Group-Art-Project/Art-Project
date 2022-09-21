@@ -44,8 +44,9 @@ const ModifyCritique = (props) => {
             navigate('/allcritiques');
         })
         .catch((err) => {
-            console.log(err.response.data.err.errors);
-            setErrors(err.response.data.err.errors);
+            console.log(err.response.status);
+            console.log(err.response.data.error.errors);
+            setErrors(err.response.data.error.errors);
         });
     }
 
@@ -92,7 +93,7 @@ const ModifyCritique = (props) => {
                 onChange={(e) => setAuthor(e.target.value)}
                 value={author}
                 />
-    {/* {errors.author ? <p id='error-red'>{errors.author.message}</p> : null} */}
+                {errors.author ? <p id='error-red'>{errors.author.message}</p> : null}
                 <label htmlFor="authorEmail">Author Email:</label>
                 <input
                 type="text"
@@ -101,6 +102,7 @@ const ModifyCritique = (props) => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 />
+                {errors.email ? <p id='error-red'>{errors.email.message}</p> : null}
                 <label htmlFor="rating">Rating:</label>
                 <input name="rating"
                 type="text"
@@ -108,9 +110,8 @@ const ModifyCritique = (props) => {
                 placeholder="Enter a rating from 1-10"
                 onChange={(e) => setRating(e.target.value)}
                 value={rating}
-                ></input>
-
-
+                />
+                {errors.rating ? <p id='error-red'>{errors.rating.message}</p> : null}
                 <label htmlFor="content">Content:</label>
                 <textarea name="content" cols="20" rows="12"
                 type="textarea"
@@ -119,6 +120,7 @@ const ModifyCritique = (props) => {
                 onChange={(e) => setOpinionContent(e.target.value)}
                 value={opinionContent}
                 ></textarea>
+                {errors.opinionContent ? <p id='error-red'>{errors.opinionContent.message}</p> : null}
 
                 </div>
             </div>

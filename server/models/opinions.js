@@ -40,23 +40,33 @@ const OpinionSchema = new mongoose.Schema(
 
         author:{
             type: String, 
-            required: [true, "Please enter your name"]
+            required: [true, "Please enter your name"],
+            minLength: [3, "Must contain at least three characters"],
+            maxLength: [25, "Cannot exceed twenty-five characters"]
         },
 
         email:{
             type: String, 
-            required: [true, "Please enter your email address"]
+            required : [true, "Email Address is required"],
+        validate: {
+            validator: function (v) {
+                return /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(v);
+            },
+            message: "Please enter a valid email address",
+        }
         },
 
         opinionContent:{
             type: String, 
-            required: [true, "Tell us what you think!"]
+            required: [true, "Tell us what you think!"],
+            minLength: [10, "Must contain at least ten characters"],
+            maxLength: [300, "Cannot exceed three-hundred characters"]
         },
 
         rating:{
             type: Number, 
-            minimum: 1,
-            maximum: 10,
+            min: [0, "Minimum rating is a zero"],
+            max: [10, "Max rating is a ten"],
             required: [true, "Rate this piece"]
         },
 
