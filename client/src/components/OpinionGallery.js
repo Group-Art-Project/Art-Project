@@ -34,7 +34,7 @@ const OpinionGallery = (props) => {
                 <div className="font-link">
                 <div className="col-12">
                 <div className='pageTitleButton'>
-                    <h1>Art Critique Blog</h1>
+                    <h1>Art Critique Gallery</h1>
                     <Link to="/">
                         <button className="goToBlogButton"> Go to Art Generation </button>
                     </Link>
