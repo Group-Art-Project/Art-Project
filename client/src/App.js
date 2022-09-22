@@ -31,7 +31,7 @@ function App() {
   
   return (
     <div className="App">
-      <img className="metlogo" src={metLogo} alt="Blog Logo is usually here.. we apologize for the mishap"/>
+      <a href="http://localhost:3000"><img src={metLogo} title="Image" alt="Blog Logo is usually here.. we apologize for the mishap" className="metlogo" /></a>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ArtGeneration error={error} setError={setError} handleCulture={handleCulture} culture={culture} setCulture={setCulture}/>} />

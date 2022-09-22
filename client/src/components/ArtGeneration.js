@@ -15,7 +15,7 @@ const ArtGeneration = (props) => {
     return (
         <div className='container'>
             <div className='pageTitleButton'>
-                <h1>Welcome!</h1>
+                <h1 id="welcomeSign" >Welcome!</h1>
                 <Link to="/allcritiques">
                     <button className="goToBlogButton"> Go to blog </button>
                 </Link>
