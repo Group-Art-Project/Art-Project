@@ -30,9 +30,9 @@ const OpinionGallery = (props) => {
     console.log(opinionList);
 
     return (
-        <div className="container">
-            <div className="font-link">
-            <div className="col-12">
+            <div className="container">
+                <div className="font-link">
+                <div className="col-12">
                 <div className='pageTitleButton'>
                     <h1>Art Critique Blog</h1>
                     <Link to="/">
@@ -41,37 +41,36 @@ const OpinionGallery = (props) => {
                 </div>
                 <div className="body">
                 <table className="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Artist</th>
-                        <th scope="col">Rating</th>
-                        <th scope="col">Actions</th>
-                    </tr> 
-                </thead>
-                <tbody className="table table-striped table-bordered">
-                {
-                    opinionList && opinionList.map((opinion, index) => (
-                            <div key={index}>
-                                    <tr>
-                                        <button id='identify-button'><Link to={`/critique/${opinion._id}`}>{opinion.title}</Link></button>
-                                        <td scope='col'>{opinion.artistDisplayName}</td>
-                                        <td scope='col'>{opinion.rating}</td>
-                                        <td scope='col'>
-                                            <button onClick={()=> navigate(`/critique/edit/${opinion._id}`)}>Edit</button>
-                                            <button onClick={()=> deleteOpinion(opinion._id)}>Delete</button>
-                                        </td>
-                                    </tr>
-                            </div>
-                    ))
-                }
-                </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Actions</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                    {opinionList.map((opinion, index) => {
+                        return (
+                            <tr key={opinion._id}>
+                                <button><Link to={`/critique/${opinion._id}`}>{opinion.title}</Link></button>
+                                <td>{opinion.artistDisplayName}</td>
+                                <td>{opinion.rating}</td>
+                                <td className="links">
+                                    <button><Link to={`/critique/edit/${opinion._id}`}>Edit</Link></button>
+                                    <button id='buttonhover' onClick={()=> navigate(`/critique/edit/${opinion._id}`)}>Another Edit Screen</button>
+                                    <button onClick={()=> deleteOpinion(opinion._id)}>Delete</button>
+                                </td>
+                            </tr>
+                            );
+                        })}
+                    </tbody>
                 </table>
-                </div>
-            </div>
             </div>
         </div>
-        );
+    </div>
+</div>
+);
 }
 
 export default OpinionGallery

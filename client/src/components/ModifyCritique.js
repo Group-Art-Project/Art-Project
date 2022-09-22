@@ -58,7 +58,7 @@ const ModifyCritique = (props) => {
         <div className='container'>
             <div className='pageTitleButton' key={culture}>
                 
-                <h2 id='critique-header'>Give Your Critique of: {culture[0].title} </h2>
+                <h2 id='critique-header'>Modify The Critique of {culture[0].title} </h2>
                 <div className='button-spacer'>
                     <Link to="/allcritiques">
                         <button className="goToBlogButton"> Go to blog </button>
@@ -78,7 +78,7 @@ const ModifyCritique = (props) => {
                     <h6>Description: {culture[0].creditLine}</h6>
                 </div>
                 <div className='artData'>
-                    <h6>This piece is housed in: {culture[0].department}</h6>
+                    <h6>This piece is housed in the department of: {culture[0].department}</h6>
                     <img id='primaryImage' src={culture[0].primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
@@ -121,7 +121,6 @@ const ModifyCritique = (props) => {
                 value={opinionContent}
                 ></textarea>
                 {errors.opinionContent ? <p id='error-red'>{errors.opinionContent.message}</p> : null}
-
                 </div>
             </div>
             <span className='deletePost'>

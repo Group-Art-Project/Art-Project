@@ -89,7 +89,7 @@ const CreateCritique = (props) => {
                     <h6>Description: {culture[0].creditLine}</h6>
                 </div>
                 <div className='artData'>
-                    <h6>This piece is housed in: {culture[0].department}</h6>
+                    <h6>This piece is housed in the department of: {culture[0].department}</h6>
                     <img id='primaryImage' src={culture[0].primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
