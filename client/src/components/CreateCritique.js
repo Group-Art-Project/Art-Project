@@ -68,7 +68,6 @@ const CreateCritique = (props) => {
     return (
         <div className='container'>
             <div className='pageTitleButton' key={culture}>
-                
                 <h2 id='critique-header'>Give Your Critique of: {culture[0].title} </h2>
                 <div className='button-spacer'>
                     <Link to="/allcritiques">
@@ -93,6 +92,7 @@ const CreateCritique = (props) => {
                     <img id='primaryImage' src={culture[0].primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
+            <br/>
             <form>
             <div className="form-group">
                 <div className="column">
@@ -138,6 +138,7 @@ const CreateCritique = (props) => {
             <button onClick={submitHandler} className="btn btn-primary">Add Critique </button>
             </span>
             </form>
+            <br/>
         </div>
     )
 }

@@ -72,6 +72,8 @@ const sendHandler = (e) => {
                 </div>
             </div>
             <button onClick={sendHandler}>Receive Email about {opinionList.title} and Delete from Blog</button>
+            <br/>
+            <br/>
             </div>
     )
 }   
