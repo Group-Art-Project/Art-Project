@@ -48,9 +48,6 @@ const ArtGeneration = (props) => {
                 <button onClick={(e) => {handleCulture("european")}}>European Art</button>
             </div>
             <div>
-                <p>Another day another div for testing purposes</p>
-            </div>
-            <div>
             {culture.map(culture => {
         return (
         <div className='artgen-map' key={culture}>
