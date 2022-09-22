@@ -53,12 +53,11 @@ const OpinionGallery = (props) => {
                     {opinionList.map((opinion, index) => {
                         return (
                             <tr key={opinion._id}>
-                                <button><Link to={`/critique/${opinion._id}`}>{opinion.title}</Link></button>
+                                <button className='title-link'><Link to={`/critique/${opinion._id}`}>{opinion.title}</Link></button>
                                 <td>{opinion.artistDisplayName}</td>
                                 <td>{opinion.rating}</td>
                                 <td className="links">
-                                    <button><Link to={`/critique/edit/${opinion._id}`}>Edit</Link></button>
-                                    <button id='buttonhover' onClick={()=> navigate(`/critique/edit/${opinion._id}`)}>Another Edit Screen</button>
+                                    <button id='buttonhover' onClick={()=> navigate(`/critique/edit/${opinion._id}`)}>Edit</button>
                                     <button onClick={()=> deleteOpinion(opinion._id)}>Delete</button>
                                 </td>
                             </tr>
