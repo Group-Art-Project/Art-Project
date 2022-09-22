@@ -55,13 +55,14 @@ const sendHandler = (e) => {
             </div>
             <div className='allArtData'>
                 <div className='artData'>
+                    <h4>Critique Author: {opinionList.author}</h4>
+                    <br/>
                     <h6>Artist: {opinionList.artistDisplayName} </h6>
                     <h6>Object: {opinionList.objectName}</h6>
                     <h6>Time Period: {opinionList.objectBeginDate} to {opinionList.objectEndDate} </h6>
                     <h6>Region: {opinionList.culture}</h6>
                     <h6>Nationality: {opinionList.artistNationality}</h6>
                     <h6>Description: {opinionList.creditLine}</h6>
-                    <h4>Critique Author: {opinionList.author}</h4>
                     <h6>Rating: {opinionList.rating}</h6>
                     <h6>Critique Content: {opinionList.opinionContent}</h6>
                 </div>
