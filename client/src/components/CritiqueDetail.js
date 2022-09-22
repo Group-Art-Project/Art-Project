@@ -7,7 +7,6 @@ import emailjs from '@emailjs/browser';
 const CritiqueDetail = (props) => {
 
     const {id} = useParams();
-
     const [artList, setArtList] = useState({});
     const {opinionList, setOpinionList} = props;
 
@@ -62,13 +61,16 @@ const sendHandler = (e) => {
                     <h6>Region: {opinionList.culture}</h6>
                     <h6>Nationality: {opinionList.artistNationality}</h6>
                     <h6>Description: {opinionList.creditLine}</h6>
+                    <h4>Critique Author: {opinionList.author}</h4>
+                    <h6>Rating: {opinionList.rating}</h6>
+                    <h6>Critique Content: {opinionList.opinionContent}</h6>
                 </div>
                 <div className='artData'>
-                    <h6>This piece is housed in: {opinionList.department} </h6>
+                    <h6>This piece is housed in the department: {opinionList.department} </h6>
                     <img id='primaryImage' src={opinionList.primaryImage} alt="sorry there is no image available"/>
                 </div>
             </div>
-            <button onClick={sendHandler}>Submit Request</button>
+            <button onClick={sendHandler}>Receive Email about {opinionList.title} and Delete from Blog</button>
             </div>
     )
 }   
